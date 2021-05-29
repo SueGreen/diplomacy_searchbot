@@ -1,12 +1,15 @@
 train {
     dataset_params: {
+#        data_dir: "/checkpoint/alerer/fairdiplomacy/facebook_notext/games"
         data_dir: "/checkpoint/alerer/fairdiplomacy/facebook_notext/games"
         num_dataloader_workers: 20
         debug_only_opening_phase: false
         value_decay_alpha: 0.9;
     }
 
+#    data_cache: "/checkpoint/apjacob/fairdiplomacy/no_press/data_cache/data_cache_fb_minrating0.5.pt";
     data_cache: "/checkpoint/apjacob/fairdiplomacy/no_press/data_cache/data_cache_fb_minrating0.5.pt";
+#    metadata_path: "/checkpoint/alerer/fairdiplomacy/facebook_notext/metadata.json";
     metadata_path: "/checkpoint/alerer/fairdiplomacy/facebook_notext/metadata.json";
     batch_size: 2500;
     lr: 0.001;

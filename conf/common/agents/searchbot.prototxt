@@ -1,6 +1,7 @@
 searchbot {
   max_batch_size: 700
-  model_path: "/checkpoint/alerer/fairdiplomacy/sl_fbdata_all/checkpoint.pth.best"
+  model_path: "/home/susan/PycharmProjects/fb_diplomacy/diplomacy_searchbot/blueprint.pt"
+#  model_path: "/checkpoint/alerer/fairdiplomacy/sl_fbdata_all/checkpoint.pth.best"
   n_plausible_orders: 8
   n_rollout_procs: 56
   n_rollouts: 100

@@ -28,7 +28,11 @@ def _register(f):
 
 @_register
 def compare_agents(cfg):
+    # import configparser
+    # cfg = configparser.ConfigParser()
+    # cfg.read(config_path)
 
+    print(f'in compare_agents_function. cfg: {cfg}')
     # NEED TO SET THIS BEFORE CREATING THE AGENT!
     if cfg.seed >= 0:
         logging.info(f"Set seed to {cfg.seed}")
@@ -54,33 +58,45 @@ def compare_agents(cfg):
         max_turns=cfg.max_turns,
         max_year=cfg.max_year,
     )
+    print(f'HEREEE in cmp agents from run: kwargs: {kwargs}')
+    result = run_1v6_trial(
+        agent_one,
+        agent_six,
+        power_string,
+        save_path=cfg.out if cfg.out else None,
+        seed=cfg.seed,
+        cf_agent=cf_agent,
+        use_shared_agent=cfg.use_shared_agent,
+        **kwargs,
+    )
+    logging.warning("Result: {}".format(result))
 
-    if cfg.num_processes > 0:
-        assert cfg.num_trials > 0
-        result = run_1v6_trial_multiprocess(
-            agent_one,
-            agent_six,
-            power_string,
-            save_path=cfg.out if cfg.out else None,
-            seed=cfg.seed,
-            cf_agent=cf_agent,
-            num_processes=cfg.num_processes,
-            num_trials=cfg.num_trials,
-            use_shared_agent=cfg.use_shared_agent,
-            **kwargs,
-        )
-    else:
-        result = run_1v6_trial(
-            agent_one,
-            agent_six,
-            power_string,
-            save_path=cfg.out if cfg.out else None,
-            seed=cfg.seed,
-            cf_agent=cf_agent,
-            use_shared_agent=cfg.use_shared_agent,
-            **kwargs,
-        )
-        logging.warning("Result: {}".format(result))
+    # if cfg.num_processes > 0:
+    #     assert cfg.num_trials > 0
+    #     result = run_1v6_trial_multiprocess(
+    #         agent_one,
+    #         agent_six,
+    #         power_string,
+    #         save_path=cfg.out if cfg.out else None,
+    #         seed=cfg.seed,
+    #         cf_agent=cf_agent,
+    #         num_processes=cfg.num_processes,
+    #         num_trials=cfg.num_trials,
+    #         use_shared_agent=cfg.use_shared_agent,
+    #         **kwargs,
+    #     )
+    # else:
+    #     result = run_1v6_trial(
+    #         agent_one,
+    #         agent_six,
+    #         power_string,
+    #         save_path=cfg.out if cfg.out else None,
+    #         seed=cfg.seed,
+    #         cf_agent=cf_agent,
+    #         use_shared_agent=cfg.use_shared_agent,
+    #         **kwargs,
+    #     )
+    #     logging.warning("Result: {}".format(result))
 
 
 @_register
@@ -170,6 +186,7 @@ def profile_model(cfg):
 @heyhi.save_result_in_cwd
 def main(task, cfg):
     heyhi.setup_logging()
+
     logging.info("Cwd: %s", os.getcwd())
     logging.info("Task: %s", task)
     logging.info("Cfg:\n%s", cfg)
@@ -185,4 +202,6 @@ def main(task, cfg):
 
 
 if __name__ == "__main__":
+    # config_path = '/home/susan/PycharmProjects/fb_diplomacy/diplomacy_searchbot/conf/c01_ag_cmp/cmp.prototxt'
+    # compare_agents(config_path)
     heyhi.parse_args_and_maybe_launch(main)

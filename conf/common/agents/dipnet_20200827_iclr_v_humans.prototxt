@@ -1,4 +1,5 @@
 dipnet {
-    model_path: "/checkpoint/alerer/fairdiplomacy/sl_fbdata_20200717_solo_vsm_vlw0.7/checkpoint.pth.best"
+    model_path: "/home/susan/PycharmProjects/fb_diplomacy/diplomacy_searchbot/blueprint.pt"
+#    model_path: "/checkpoint/alerer/fairdiplomacy/sl_fbdata_20200717_solo_vsm_vlw0.7/checkpoint.pth.best"
     temperature: 0.5
 }
