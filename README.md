@@ -87,8 +87,9 @@ After each pull it's recommended to run `make` to re-compile internal C++ and pr
 
 
 ### Installation troubleshooting
-```
+
 1. ERROR:
+```
 CMake Error at CMakeLists.txt:16 (find_package):
   By not providing "Findpybind11.cmake" in CMAKE_MODULE_PATH this project has
   asked CMake to find a package configuration file provided by "pybind11",
@@ -104,27 +105,28 @@ CMake Error at CMakeLists.txt:16 (find_package):
   "pybind11_DIR" to a directory containing one of the above files.  If
   "pybind11" provides a separate development package or SDK, be sure it has
   been installed.
-
+```
 SOLUTION:
-export CMAKE_PREFIX_PATH=pybind11
+```export CMAKE_PREFIX_PATH=pybind11 ```
 
 2. ERROR:
-Could NOT find CUDNN (missing: CUDNN_LIBRARY_PATH CUDNN_INCLUDE_PATH)
+```Could NOT find CUDNN (missing: CUDNN_LIBRARY_PATH CUDNN_INCLUDE_PATH)```
 
 SOLUTION:
 Install cuda and cudnn from the official cuda documentation for installation: https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html
 # Check that the system is cuda-compatible, cuda and cudnn are installed on the system and run the following command to see the system management interface
-nvidia-smi
+```nvidia-smi```
 
 3. ERROR:
-Executing transaction: / WARNING conda.core.envs_manager:register_env(46): Unable to register environment. Path not writable or missing.
+```Executing transaction: / WARNING conda.core.envs_manager:register_env(46): Unable to register environment. Path not writable or missing.
   environment location: /root/miniconda3
   registry file: /root/.conda/environments.txt
-  
+```
+
 SOLUTION:
 Conda for some reason didn't want to create .conda directory. Manual addition of directory solved the problem.
 After creating .conda directory manually, the conda did not want to add itself to PATH. So adding manually to PATH is required as well.
-```
+
 
 
 
