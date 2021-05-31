@@ -47,6 +47,10 @@ What's more, you can play the game online on [WebDiplomacy](https://webdiplomacy
 git clone --recursive git@github.com:facebookresearch/diplomacy_searchbot.git
 cd diplomacy_searchbot
 
+# If the system is cuda-compatible but cuda and cudnn are not installed on the system, refer to the [official cuda documentation for installation](https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html)
+# Check that cuda and cudnn are installed on the system and run the following command to see the system management interface
+nvidia-smi
+
 # Apt installs
 apt-get install -y wget bzip2 ca-certificates curl git build-essential clang-format-8 git wget cmake build-essential autoconf libtool pkg-config libgoogle-glog-dev
 
@@ -80,6 +84,41 @@ make test_fast
 ```
 
 After each pull it's recommended to run `make` to re-compile internal C++ and protobuf code. In case of missing dependencies, run `make deps` to install all dependencies.
+
+
+### Installation troubleshooting
+```
+1. ERROR:
+CMake Error at CMakeLists.txt:16 (find_package):
+  By not providing "Findpybind11.cmake" in CMAKE_MODULE_PATH this project has
+  asked CMake to find a package configuration file provided by "pybind11",
+  but CMake did not find one.
+
+  Could not find a package configuration file provided by "pybind11" with any
+  of the following names:
+
+    pybind11Config.cmake
+    pybind11-config.cmake
+
+  Add the installation prefix of "pybind11" to CMAKE_PREFIX_PATH or set
+  "pybind11_DIR" to a directory containing one of the above files.  If
+  "pybind11" provides a separate development package or SDK, be sure it has
+  been installed.
+
+SOLUTION:
+export CMAKE_PREFIX_PATH=pybind11
+
+2. ERROR:
+Could NOT find CUDNN (missing: CUDNN_LIBRARY_PATH CUDNN_INCLUDE_PATH)
+
+SOLUTION:
+Install cuda and cudnn from [official cuda documentation for installation](https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html)
+# Check that the system is cuda-compatible, cuda and cudnn are installed on the system and run the following command to see the system management interface
+nvidia-smi
+```
+
+
+
 
 ### Running tasks
 
