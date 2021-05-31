@@ -113,8 +113,9 @@ SOLUTION:
 ```Could NOT find CUDNN (missing: CUDNN_LIBRARY_PATH CUDNN_INCLUDE_PATH)```
 
 SOLUTION:
-Install cuda and cudnn from the official cuda documentation for installation: https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html
-# Check that the system is cuda-compatible, cuda and cudnn are installed on the system and run the following command to see the system management interface
+Install cuda and cudnn from the [official cuda documentation for installation](https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html)
+
+Check that the system is cuda-compatible, cuda and cudnn are installed on the system and run the following command to see the system management interface
 ```nvidia-smi```
 
 3. ERROR:
@@ -125,6 +126,7 @@ Install cuda and cudnn from the official cuda documentation for installation: ht
 
 SOLUTION:
 Conda for some reason didn't want to create .conda directory. Manual addition of directory solved the problem.
+
 After creating .conda directory manually, the conda did not want to add itself to PATH. So adding manually to PATH is required as well.
 
 
